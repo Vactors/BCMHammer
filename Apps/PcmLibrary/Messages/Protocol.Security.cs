@@ -21,7 +21,7 @@ namespace PcmHacking
         /// </summary>
         public Message CreateSeedRequest()
         {
-            byte[] Bytes = new byte[] { Priority.Physical0, DeviceId.Pcm, DeviceId.Tool, Mode.Seed, Submode.GetSeed };
+            byte[] Bytes = new byte[] { Priority.Physical0, DeviceId.Bcm, DeviceId.Tool, Mode.Seed, Submode.GetSeed };
             return new Message(Bytes);
         }
 
@@ -34,8 +34,8 @@ namespace PcmHacking
             ResponseStatus status;
             UInt16 result = 0;
 
-            byte[] unlocked = { Priority.Physical0, 0x70, DeviceId.Pcm, Mode.Seed + Mode.Response, 0x01, 0x37 };
-            byte[] seed = new byte[] { Priority.Physical0, DeviceId.Tool, DeviceId.Pcm, Mode.Seed + Mode.Response, 0x01 };
+            byte[] unlocked = { Priority.Physical0, 0x70, DeviceId.Bcm, Mode.Seed + Mode.Response, 0x01, 0x37 };
+            byte[] seed = new byte[] { Priority.Physical0, DeviceId.Tool, DeviceId.Bcm, Mode.Seed + Mode.Response, 0x01 };
 
             if (TryVerifyInitialBytes(response, unlocked, out status))
             {
@@ -61,7 +61,7 @@ namespace PcmHacking
         {
             byte KeyHigh = (byte)((Key & 0xFF00) >> 8);
             byte KeyLow = (byte)(Key & 0xFF);
-            byte[] Bytes = new byte[] { Priority.Physical0, DeviceId.Pcm, DeviceId.Tool, Mode.Seed, Submode.SendKey, KeyHigh, KeyLow };
+            byte[] Bytes = new byte[] { Priority.Physical0, DeviceId.Bcm, DeviceId.Tool, Mode.Seed, Submode.SendKey, KeyHigh, KeyLow };
             return new Message(Bytes);
         }
 

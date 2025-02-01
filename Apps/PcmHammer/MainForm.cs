@@ -813,8 +813,8 @@ namespace PcmHacking
                 if (osResponse.Status == ResponseStatus.Success)
                 {
                     this.AddUserMessage("OSID: " + osResponse.Value.ToString());
-                    pcmInfo = new OSIDInfo(osResponse.Value);
-                    this.AddUserMessage("Description: " + pcmInfo.Description);
+                    // pcmInfo = new OSIDInfo(osResponse.Value);
+                    // this.AddUserMessage("Description: " + pcmInfo.Description);
                 }
                 else
                 {
@@ -865,39 +865,39 @@ namespace PcmHacking
                     }
                 }
 
-                // Disable BCC lookup for those that do not provide it
-                if (pcmInfo != null && pcmInfo.HardwareType != PcmType.P04 && pcmInfo.HardwareType != PcmType.P04_Early && pcmInfo.HardwareType != PcmType.P08)
-                {
-                    var bccResponse = await this.Vehicle.QueryBCC();
-                    if (bccResponse.Status == ResponseStatus.Success)
-                    {
-                        this.AddUserMessage("Broad Cast Code: " + bccResponse.Value.ToString());
-                    }
-                    else
-                    {
-                        this.AddUserMessage("BCC query failed: " + bccResponse.Status.ToString());
-                    }
-                }
+                //// Disable BCC lookup for those that do not provide it
+                //if (pcmInfo != null && pcmInfo.HardwareType != PcmType.P04 && pcmInfo.HardwareType != PcmType.P04_Early && pcmInfo.HardwareType != PcmType.P08)
+                //{
+                //    var bccResponse = await this.Vehicle.QueryBCC();
+                //    if (bccResponse.Status == ResponseStatus.Success)
+                //    {
+                //        this.AddUserMessage("Broad Cast Code: " + bccResponse.Value.ToString());
+                //    }
+                //    else
+                //    {
+                //        this.AddUserMessage("BCC query failed: " + bccResponse.Status.ToString());
+                //    }
+                //}
 
-                var mecResponse = await this.Vehicle.QueryMEC();
-                if (mecResponse.Status == ResponseStatus.Success)
-                {
-                    this.AddUserMessage("MEC: " + mecResponse.Value.ToString());
-                }
-                else
-                {
-                    this.AddUserMessage("MEC query failed: " + mecResponse.Status.ToString());
-                }
+                //var mecResponse = await this.Vehicle.QueryMEC();
+                //if (mecResponse.Status == ResponseStatus.Success)
+                //{
+                //    this.AddUserMessage("MEC: " + mecResponse.Value.ToString());
+                //}
+                //else
+                //{
+                //    this.AddUserMessage("MEC query failed: " + mecResponse.Status.ToString());
+                //}
 
-                var voltageResponse = await this.Vehicle.QueryVoltage();
-                if (voltageResponse.Status == ResponseStatus.Success)
-                {
-                    this.AddUserMessage("Voltage: " + voltageResponse.Value.ToString());
-                }
-                else
-                {
-                    this.AddUserMessage("Voltage query failed: " + voltageResponse.Status.ToString());
-                }
+                //var voltageResponse = await this.Vehicle.QueryVoltage();
+                //if (voltageResponse.Status == ResponseStatus.Success)
+                //{
+                //    this.AddUserMessage("Voltage: " + voltageResponse.Value.ToString());
+                //}
+                //else
+                //{
+                //    this.AddUserMessage("Voltage query failed: " + voltageResponse.Status.ToString());
+                //}
             }
             catch (Exception exception)
             {

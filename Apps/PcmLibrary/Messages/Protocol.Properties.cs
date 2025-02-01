@@ -11,7 +11,7 @@ namespace PcmHacking
         /// </summary>
         public Message CreateReadRequest(byte Block)
         {
-            byte[] Bytes = new byte[] { Priority.Physical0, DeviceId.Pcm, DeviceId.Tool, Mode.ReadBlock, Block };
+            byte[] Bytes = new byte[] { Priority.Physical0, DeviceId.Bcm, DeviceId.Tool, Mode.ReadBlock, Block };
             return new Message(Bytes);
         }
 
@@ -51,7 +51,7 @@ namespace PcmHacking
             int result = 0;
             ResponseStatus status;
 
-            byte[] expected = new byte[] { Priority.Physical0, DeviceId.Tool, DeviceId.Pcm, responseMode };
+            byte[] expected = new byte[] { Priority.Physical0, DeviceId.Tool, DeviceId.Bcm, responseMode };
             if (!TryVerifyInitialBytes(bytes, expected, out status))
             {
                 return Response.Create(ResponseStatus.Error, (UInt32)result);
@@ -111,19 +111,19 @@ namespace PcmHacking
             string result = "Unknown";
             ResponseStatus status;
 
-            byte[] expected = new byte[] { Priority.Physical0, DeviceId.Tool, DeviceId.Pcm, Mode.ReadBlock + Mode.Response, BlockId.Vin1 };
+            byte[] expected = new byte[] { Priority.Physical0, DeviceId.Tool, DeviceId.Bcm, Mode.ReadBlock + Mode.Response, BlockId.Vin1 };
             if (!TryVerifyInitialBytes(response1, expected, out status))
             {
                 return Response.Create(status, result);
             }
 
-            expected = new byte[] { Priority.Physical0, DeviceId.Tool, DeviceId.Pcm, Mode.ReadBlock + Mode.Response, BlockId.Vin2 };
+            expected = new byte[] { Priority.Physical0, DeviceId.Tool, DeviceId.Bcm, Mode.ReadBlock + Mode.Response, BlockId.Vin2 };
             if (!TryVerifyInitialBytes(response2, expected, out status))
             {
                 return Response.Create(status, result);
             }
 
-            expected = new byte[] { Priority.Physical0, DeviceId.Tool, DeviceId.Pcm, Mode.ReadBlock + Mode.Response, BlockId.Vin3 };
+            expected = new byte[] { Priority.Physical0, DeviceId.Tool, DeviceId.Bcm, Mode.ReadBlock + Mode.Response, BlockId.Vin3 };
             if (!TryVerifyInitialBytes(response3, expected, out status))
             {
                 return Response.Create(status, result);

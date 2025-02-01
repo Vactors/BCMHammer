@@ -17,6 +17,8 @@ namespace PcmHacking
         /// </summary>
         public const byte Pcm = 0x10;
 
+        public const byte Bcm = 0x40;
+
         /// <summary>
         /// OBD2 Device ID for the tool
         /// </summary>
