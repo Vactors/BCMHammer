@@ -2945,6 +2945,11 @@ namespace PcmHacking
                     this.ImageSize = 2048 * 1024;
                     break;
 
+                // BCMs
+                case 15116067:
+                    this.KeyAlgorithm = 18;
+                    break;
+
                 default:
                     PCMInfo(PcmType.Undefined);
                     break;
